@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>IDK</title>
+  </head>
+  <body>
+    <div class="container">
+      <img src="#" />
+      <button id="button">Dumb Cats!</button>
+    </div>
+
+    <script>
+      const button = document.getElementById("button");
+      const img = document.querySelector("img");
+      fetch(
+        "https://api.giphy.com/v1/gifs/translate?api_key=aDKC7Z1QyGy3M1ZNmjzaxHUy1xnaCX7X&s=cats",
+        { mode: "cors" }
+      )
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (response) {
+          img.src = response.data.images.original.url;
+        });
+
+      button.addEventListener("click", () => {
+        window.location.reload();
+      });
+    </script>
+  </body>
+</html>
